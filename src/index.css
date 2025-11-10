@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  color: white;
+}
+
+@layer base {
+  :root {
+    --background: 220 17% 7%;
+    --foreground: 210 40% 98%;
+    --card: 220 17% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 220 17% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 175 70% 55%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 280 70% 60%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 220 17% 15%;
+    --muted-foreground: 215 20% 70%;
+    --accent: 175 70% 55%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 17% 20%;
+    --input: 220 17% 20%;
+    --ring: 175 70% 55%;
+    --radius: 0.75rem;
+    --chart-1: 175 70% 55%;
+    --chart-2: 280 70% 60%;
+    --chart-3: 200 80% 50%;
+    --chart-4: 320 65% 55%;
+    --chart-5: 140 60% 50%;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 175 70% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 280 70% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 175 70% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 175 70% 45%;
+  }
+}
+
+/* Futuristic gradient backgrounds */
+@layer utilities {
+  .gradient-primary {
+    background: linear-gradient(
+      135deg,
+      hsl(175, 70%, 55%) 0%,
+      hsl(280, 70%, 60%) 100%
+    );
+  }
+
+  .gradient-mesh {
+    background: radial-gradient(
+        at 0% 0%,
+        hsla(175, 70%, 55%, 0.15) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 100% 0%,
+        hsla(280, 70%, 60%, 0.15) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 100% 100%,
+        hsla(175, 70%, 55%, 0.15) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 0% 100%,
+        hsla(280, 70%, 60%, 0.15) 0px,
+        transparent 50%
+      );
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 20px hsla(var(--primary), 0.3);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 20px hsla(var(--secondary), 0.3);
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--secondary)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .grid-pattern {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px
+    );
+    background-size: 20px 20px;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px hsla(var(--primary), 0.3);
+  }
+  to {
+    box-shadow: 0 0 40px hsla(var(--primary), 0.6),
+      0 0 60px hsla(var(--secondary), 0.3);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite linear;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 1000px 100%;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--secondary));
+}
+
+/* Selection styling */
+::selection {
+  background: hsla(var(--primary), 0.3);
+  color: hsl(var(--foreground));
+}
