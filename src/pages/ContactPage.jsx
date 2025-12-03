@@ -43,7 +43,7 @@ export default function ContactPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-5 gap-12">
               {/* Contact Info */}
-              <div className="lg:col-span-2 space-y-8">
+              <div className="lg:col-span-2 space-y-8 text-sm md:text-md lg:text-lg">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold mb-6">
                     Contact <span className="text-gradient">Information</span>
@@ -87,12 +87,20 @@ export default function ContactPage() {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-semibold mb-1">Email</h3>
-                        <a
-                          href="mailto:info@technorainsolutions.co.za"
-                          className="text-muted-foreground hover:text-primary transition-colors break-all"
-                        >
-                          info@technorainsolutions.co.za
-                        </a>
+                        <div className="flex flex-col gap-1">
+                          <a
+                            href="mailto:info@technorainsolutions.co.za"
+                            className="text-muted-foreground hover:text-primary transition-colors break-all"
+                          >
+                            info@technorainsolutions.co.za
+                          </a>
+                          <a
+                            href="mailto:Tmnisi@technorainsolutions.co.za"
+                            className="text-muted-foreground hover:text-primary transition-colors break-all"
+                          >
+                            Tmnisi@technorainsolutions.co.za
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -109,7 +117,7 @@ export default function ContactPage() {
                       <div className="flex-1">
                         <h3 className="font-semibold mb-1">Location</h3>
                         <p className="text-muted-foreground">
-                          Waterfall East, Midrand
+                          205 Tjakastad, Nhlazatje, Mpumalanga, 1193
                           <br />
                           South Africa
                         </p>
@@ -255,7 +263,7 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section (Optional) */}
-      <section className="relative py-32 overflow-hidden">
+      {/* <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 gradient-mesh opacity-30" />
 
         <div className="relative container mx-auto px-4">
@@ -272,7 +280,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </PageLayout>
   );
 }

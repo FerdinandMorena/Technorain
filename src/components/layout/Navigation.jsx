@@ -56,7 +56,7 @@ export default function Navigation() {
                   <Zap className="w-7 h-7 text-white" />
                 </div>
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-start">
                 <span className="text-xl font-bold text-gradient">
                   Technorain
                 </span>
@@ -78,10 +78,10 @@ export default function Navigation() {
                 >
                   {/* Glow effect on hover */}
                   <span className="absolute inset-0 bg-primary/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
+
                   {/* Text */}
                   <span className="relative">{link.label}</span>
-                  
+
                   {/* Animated underline */}
                   <span
                     className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-primary rounded-full transition-all duration-300 ${
@@ -90,7 +90,7 @@ export default function Navigation() {
                         : "w-0 group-hover:w-full group-hover:shadow-lg group-hover:shadow-primary/50"
                     }`}
                   />
-                  
+
                   {/* Dot indicator for active */}
                   {location.pathname === link.href && (
                     <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full animate-pulse" />
