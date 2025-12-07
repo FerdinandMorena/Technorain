@@ -27,22 +27,22 @@ export default function ServicesPage() {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 gradient-mesh" />
         <div className="absolute inset-0 grid-pattern opacity-20" />
 
-        <div className="relative container mx-auto px-4 py-32">
-          <div className="max-w-4xl mx-auto text-center space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect border border-primary/20 text-sm font-medium mb-4">
-              <Sparkles className="w-4 h-4 text-primary" />
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+          <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full glass-effect border border-primary/20 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
               Our Services
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold px-2">
               Comprehensive <span className="text-gradient">IT Solutions</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto px-2">
               Tailored technology solutions for businesses of all sizes across
               South Africa and beyond
             </p>
@@ -51,33 +51,33 @@ export default function ServicesPage() {
       </section>
 
       {/* Core Services */}
-      <section className="relative py-32">
+      <section className="relative py-16 sm:py-24 lg:py-32">
         <div className="absolute inset-0 dot-pattern opacity-10" />
 
-        <div className="relative container mx-auto px-4">
-          <div className="mb-20 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 sm:mb-16 lg:mb-20 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 px-2">
               Core <span className="text-gradient">Business Functions</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto px-2">
               Creating value through innovative solutions and strategic services
             </p>
           </div>
 
-          <div className="space-y-32">
+          <div className="space-y-16 sm:space-y-24 lg:space-y-32">
             {/* Software Development */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+              <div className="space-y-4 sm:space-y-6">
                 <div className="relative inline-block">
                   <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full" />
-                  <div className="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center glow-primary">
-                    <Code className="w-10 h-10 text-white" />
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-xl sm:rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center glow-primary">
+                    <Code className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
                   </div>
                 </div>
 
-                <h3 className="text-4xl font-bold">Software Development</h3>
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold">Software Development</h3>
 
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed">
                   Custom software solutions designed to streamline your business
                   processes and enhance operational efficiency through
                   cutting-edge technology.
@@ -253,21 +253,21 @@ export default function ServicesPage() {
       </section>
 
       {/* Additional Services */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 gradient-mesh opacity-30" />
 
-        <div className="relative container mx-auto px-4">
-          <div className="mb-16 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 sm:mb-16 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 px-2">
               Additional <span className="text-gradient">Services</span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
               Comprehensive support to ensure your IT infrastructure runs
               smoothly
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {[
               {
                 icon: Users,
@@ -293,21 +293,21 @@ export default function ServicesPage() {
             ].map((service, index) => (
               <div
                 key={index}
-                className="group glass-effect rounded-2xl p-8 border border-border/50 hover:border-primary/50 transition-all duration-500"
+                className="group glass-effect rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 border border-border/50 hover:border-primary/50 transition-all duration-500"
               >
-                <div className="relative inline-block mb-6">
+                <div className="relative inline-block mb-4 sm:mb-6">
                   <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div
-                    className={`relative w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300`}
+                    className={`relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-lg sm:rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <service.icon className="w-8 h-8 text-white" />
+                    <service.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-gradient transition-all duration-300">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-4 group-hover:text-gradient transition-all duration-300">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -317,31 +317,31 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 gradient-mesh" />
         <div className="absolute inset-0 grid-pattern opacity-20" />
 
-        <div className="relative container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl md:text-6xl font-bold">
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold px-2">
               Ready to Elevate Your{" "}
               <span className="text-gradient">IT Infrastructure?</span>
             </h2>
 
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
               Contact us today to discuss how our services can transform your
               business operations
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-6 sm:pt-8 px-2">
               <Button
                 size="lg"
                 onClick={() => handleNavigation("/contact")}
-                className="text-base px-8 py-6 bg-gradient-primary hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 group"
+                className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 bg-gradient-primary hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 group"
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center justify-center gap-2">
                   Schedule Consultation
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Button>
 
@@ -349,7 +349,7 @@ export default function ServicesPage() {
                 size="lg"
                 variant="outline"
                 onClick={() => handleNavigation("/projects")}
-                className="text-base px-8 py-6 glass-effect border-primary/30 hover:bg-primary/10 hover:border-primary transition-all duration-300"
+                className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 glass-effect border-primary/30 hover:bg-primary/10 hover:border-primary transition-all duration-300"
               >
                 View Case Studies
               </Button>

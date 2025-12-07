@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Zap, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 /**
@@ -14,8 +14,8 @@ export default function Navigation() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
+    { href: "/services", label: "Services" },
     { href: "/projects", label: "Projects" },
     { href: "/contact", label: "Contact" },
   ];
@@ -43,24 +43,22 @@ export default function Navigation() {
             : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <button
               onClick={() => handleNavigation("/")}
-              className="flex items-center gap-3 group cursor-pointer"
+              className="group cursor-pointer"
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full animate-pulse" />
-                <div className="relative w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 glow-primary">
-                  <Zap className="w-7 h-7 text-white" />
+                <div className="relative bg-white rounded-lg p-1.5 sm:p-2 transform group-hover:scale-110 transition-transform duration-300">
+                  <img
+                    src="/logo.png"
+                    alt="Technorain Solutions"
+                    className="h-8 sm:h-10 w-auto object-contain"
+                  />
                 </div>
-              </div>
-              <div className="flex flex-col text-start">
-                <span className="text-xl font-bold text-gradient">
-                  Technorain
-                </span>
-                <span className="text-xs text-muted-foreground">Solutions</span>
               </div>
             </button>
 
@@ -70,7 +68,7 @@ export default function Navigation() {
                 <button
                   key={link.href}
                   onClick={() => handleNavigation(link.href)}
-                  className={`relative text-sm font-medium transition-all duration-300 group ${
+                  className={`relative text-md font-medium transition-all duration-300 group ${
                     location.pathname === link.href
                       ? "text-primary scale-105"
                       : "text-muted-foreground hover:text-foreground hover:scale-110"
@@ -100,7 +98,7 @@ export default function Navigation() {
             </div>
 
             {/* CTA Button */}
-            <div className="hidden md:block">
+            {/* <div className="hidden md:block">
               <Button
                 onClick={() => handleNavigation("/contact")}
                 className="relative overflow-hidden group bg-gradient-primary hover:shadow-lg hover:shadow-primary/50 transition-all duration-300"
@@ -108,7 +106,7 @@ export default function Navigation() {
                 <span className="relative z-10">Get Started</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Button>
-            </div>
+            </div> */}
 
             {/* Mobile Menu Button */}
             <button
@@ -157,13 +155,13 @@ export default function Navigation() {
               {link.label}
             </button>
           ))}
-          <Button
+          {/* <Button
             onClick={() => handleNavigation("/contact")}
             size="lg"
             className="mt-8 bg-gradient-primary hover:shadow-lg hover:shadow-primary/50 transition-all duration-300"
           >
             Get Started
-          </Button>
+          </Button> */}
         </div>
       </div>
 

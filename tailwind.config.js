@@ -20,6 +20,12 @@ export default {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        // Technorain Brand Colors
+        brand: {
+          green: '#57E325',
+          blue: '#4472C4',
+          grey: '#3F3E40',
+        },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',

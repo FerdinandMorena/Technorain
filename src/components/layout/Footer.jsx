@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Zap, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
 /**
@@ -40,22 +40,18 @@ export default function Footer() {
       {/* Gradient overlay */}
       <div className="absolute inset-0 gradient-mesh opacity-30 pointer-events-none" />
 
-      <div className="relative container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full" />
-                <div className="relative w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center glow-primary">
-                  <Zap className="w-6 h-6 text-background" />
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-gradient text-lg">
-                  Technorain
-                </span>
-                <span className="text-xs text-muted-foreground">Solutions</span>
+            <div className="relative inline-block">
+              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full" />
+              <div className="relative bg-white rounded-lg p-1.5">
+                <img
+                  src="/logo.png"
+                  alt="Technorain Solutions"
+                  className="h-20 w-auto object-contain"
+                />
               </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -174,26 +170,26 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground text-center md:text-left">
-            © 2025 Technorain Solutions (PTY) LTD. All rights reserved.
+            © {new Date().getFullYear()} Technorain Solutions (PTY) LTD. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+          {/* <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <button className="hover:text-primary transition-colors">
               Privacy Policy
             </button>
             <button className="hover:text-primary transition-colors">
               Terms of Service
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* Scroll to top button */}
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-110 glow-primary z-40 group"
+        className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-primary rounded-full flex items-center justify-center shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-110 glow-primary z-40 group"
         aria-label="Scroll to top"
       >
-        <ArrowUp className="w-5 h-5 text-background group-hover:animate-bounce" />
+        <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 text-background group-hover:animate-bounce" />
       </button>
     </footer>
   );

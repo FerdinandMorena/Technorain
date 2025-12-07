@@ -5,87 +5,99 @@ body {
   color: white;
 }
 
+/* Technorain Brand Colors:
+   Primary (Green): #57E325 → HSL: 107 81% 52%
+   Secondary (Blue): #4472C4 → HSL: 218 53% 52%
+   Text (Grey): #3F3E40 → HSL: 270 1% 25%
+   White: #FFFFFF
+*/
+
 @layer base {
   :root {
-    --background: 220 17% 7%;
-    --foreground: 210 40% 98%;
-    --card: 220 17% 10%;
-    --card-foreground: 210 40% 98%;
-    --popover: 220 17% 10%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 175 70% 55%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 280 70% 60%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 220 17% 15%;
-    --muted-foreground: 215 20% 70%;
-    --accent: 175 70% 55%;
-    --accent-foreground: 210 40% 98%;
+    --background: 220 20% 8%;
+    --foreground: 0 0% 100%;
+    --card: 220 20% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 107 81% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 218 53% 52%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 107 81% 52%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 220 17% 20%;
-    --input: 220 17% 20%;
-    --ring: 175 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 25%;
+    --input: 220 20% 25%;
+    --ring: 107 81% 52%;
     --radius: 0.75rem;
-    --chart-1: 175 70% 55%;
-    --chart-2: 280 70% 60%;
-    --chart-3: 200 80% 50%;
-    --chart-4: 320 65% 55%;
-    --chart-5: 140 60% 50%;
+    --chart-1: 107 81% 52%;
+    --chart-2: 218 53% 52%;
+    --chart-3: 107 81% 40%;
+    --chart-4: 218 53% 40%;
+    --chart-5: 107 81% 65%;
+    
+    /* Brand color direct access */
+    --brand-green: #57E325;
+    --brand-blue: #4472C4;
+    --brand-grey: #3F3E40;
   }
 
   .light {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --foreground: 270 1% 25%;
+    --card: 0 0% 98%;
+    --card-foreground: 270 1% 25%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 175 70% 45%;
+    --popover-foreground: 270 1% 25%;
+    --primary: 107 81% 52%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 280 70% 50%;
+    --secondary: 218 53% 52%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 175 70% 45%;
+    --muted: 220 20% 96%;
+    --muted-foreground: 270 1% 40%;
+    --accent: 107 81% 52%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 175 70% 45%;
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
+    --ring: 107 81% 52%;
   }
 }
 
-/* Futuristic gradient backgrounds */
+/* Technorain gradient backgrounds */
 @layer utilities {
   .gradient-primary {
     background: linear-gradient(
       135deg,
-      hsl(175, 70%, 55%) 0%,
-      hsl(280, 70%, 60%) 100%
+      #57E325 0%,
+      #4472C4 100%
     );
   }
 
   .gradient-mesh {
     background: radial-gradient(
         at 0% 0%,
-        hsla(175, 70%, 55%, 0.15) 0px,
+        rgba(87, 227, 37, 0.15) 0px,
         transparent 50%
       ),
       radial-gradient(
         at 100% 0%,
-        hsla(280, 70%, 60%, 0.15) 0px,
+        rgba(68, 114, 196, 0.15) 0px,
         transparent 50%
       ),
       radial-gradient(
         at 100% 100%,
-        hsla(175, 70%, 55%, 0.15) 0px,
+        rgba(87, 227, 37, 0.15) 0px,
         transparent 50%
       ),
       radial-gradient(
         at 0% 100%,
-        hsla(280, 70%, 60%, 0.15) 0px,
+        rgba(68, 114, 196, 0.15) 0px,
         transparent 50%
       );
   }
