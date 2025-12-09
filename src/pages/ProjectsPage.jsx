@@ -173,17 +173,18 @@ export default function ProjectsPage() {
     <PageLayout>
       {/* Hero Section */}
       <section className="relative min-h-[80vh] sm:min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
         <div className="absolute inset-0 gradient-mesh" />
-        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute inset-0 grid-pattern" />
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
           <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full glass-effect border border-primary/20 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
-              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-              Our Work
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border shadow-sm text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="font-semibold text-foreground">Our Work</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold px-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold px-2 text-foreground">
               Success <span className="text-gradient">Stories</span>
             </h1>
 
@@ -196,29 +197,29 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="relative py-16 sm:py-24 lg:py-32">
-        <div className="absolute inset-0 dot-pattern opacity-10" />
+      <section className="relative py-16 sm:py-24 lg:py-32 bg-muted/30">
+        <div className="absolute inset-0 dot-pattern" />
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="group glass-effect rounded-xl sm:rounded-2xl overflow-hidden border border-border/50 hover:border-primary/50 transition-all duration-500"
+                className="group card-elevated rounded-xl sm:rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-500"
               >
                 {/* Project Header */}
                 <div className="relative h-36 sm:h-44 lg:h-48 overflow-hidden">
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20`}
+                    className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-10`}
                   />
-                  <div className="absolute inset-0 grid-pattern opacity-20" />
+                  <div className="absolute inset-0 grid-pattern" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <project.icon className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-white/20 group-hover:scale-110 transition-transform duration-500" />
+                    <project.icon className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-foreground/10 group-hover:scale-110 transition-transform duration-500" />
                   </div>
 
                   {/* Category Badge */}
                   <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
-                    <div className="px-2 sm:px-3 py-1 rounded-full glass-effect border border-white/20 text-[10px] sm:text-xs font-medium text-white">
+                    <div className="px-3 py-1.5 rounded-full bg-white border border-border shadow-sm text-xs font-medium text-foreground">
                       {project.category}
                     </div>
                   </div>
@@ -226,7 +227,7 @@ export default function ProjectsPage() {
 
                 {/* Project Content */}
                 <div className="p-4 sm:p-5 lg:p-6 space-y-3 sm:space-y-4">
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold group-hover:text-gradient transition-all duration-300">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground group-hover:text-gradient transition-all duration-300">
                     {project.title}
                   </h3>
 
@@ -239,7 +240,7 @@ export default function ProjectsPage() {
                     {project.stats.map((stat, idx) => (
                       <div
                         key={idx}
-                        className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-md sm:rounded-lg bg-primary/10 text-primary text-[10px] sm:text-xs font-medium"
+                        className="px-2 sm:px-3 py-1 rounded-md sm:rounded-lg bg-primary/10 text-primary text-[10px] sm:text-xs font-medium"
                       >
                         {stat}
                       </div>
@@ -260,11 +261,12 @@ export default function ProjectsPage() {
 
       {/* Testimonials Section with Slider */}
       <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 gradient-mesh opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+        <div className="absolute inset-0 gradient-mesh" />
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10 sm:mb-16 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 px-2 text-foreground">
               Client <span className="text-gradient">Testimonials</span>
             </h2>
             <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
@@ -284,7 +286,7 @@ export default function ProjectsPage() {
                     key={index}
                     className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)]"
                   >
-                    <div className="glass-effect rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 border border-border/50 hover:border-primary/50 transition-all duration-300 h-full">
+                    <div className="card-elevated rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 hover:border-primary/50 transition-all duration-300 h-full">
                       <div className="mb-4 sm:mb-6">
                         <div className="flex gap-1 mb-3 sm:mb-4">
                           {[...Array(testimonial.rating)].map((_, i) => (
@@ -299,7 +301,7 @@ export default function ProjectsPage() {
                         </p>
                       </div>
                       <div>
-                        <div className="font-semibold text-sm sm:text-base">
+                        <div className="font-semibold text-sm sm:text-base text-foreground">
                           {testimonial.author}
                         </div>
                         <div className="text-xs sm:text-sm text-muted-foreground">
@@ -317,7 +319,7 @@ export default function ProjectsPage() {
               <button
                 onClick={scrollPrev}
                 disabled={!canScrollPrev}
-                className="glass-effect rounded-full p-2 sm:p-3 border border-border/50 hover:border-primary/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group"
+                className="card-elevated rounded-full p-2 sm:p-3 hover:border-primary/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:scale-110 transition-transform" />
@@ -325,7 +327,7 @@ export default function ProjectsPage() {
               <button
                 onClick={scrollNext}
                 disabled={!canScrollNext}
-                className="glass-effect rounded-full p-2 sm:p-3 border border-border/50 hover:border-primary/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group"
+                className="card-elevated rounded-full p-2 sm:p-3 hover:border-primary/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed group"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-primary group-hover:scale-110 transition-transform" />
@@ -336,13 +338,13 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
+      <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden bg-muted/30">
         <div className="absolute inset-0 gradient-mesh" />
-        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute inset-0 grid-pattern" />
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold px-2 text-foreground">
               Start Your <span className="text-gradient">Project</span> Today
             </h2>
 
@@ -354,7 +356,7 @@ export default function ProjectsPage() {
             <Button
               size="lg"
               onClick={() => handleNavigation("/contact")}
-              className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 bg-gradient-primary hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 group"
+              className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 bg-gradient-primary hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 group"
             >
               <span className="flex items-center justify-center gap-2">
                 Get Started

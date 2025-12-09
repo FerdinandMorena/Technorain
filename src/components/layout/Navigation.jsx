@@ -1,10 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 /**
- * Navigation component - Futuristic design with scroll-to-top
+ * Navigation component - Modern professional design
  */
 export default function Navigation() {
   const location = useLocation();
@@ -28,155 +28,208 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
   const handleNavigation = (path) => {
     navigate(path);
-    window.scrollTo({ top: 0, behavior: "smooth" });
     setIsMobileMenuOpen(false);
   };
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "glass-effect shadow-lg shadow-primary/5"
-            : "bg-transparent"
+            ? "bg-white/98 backdrop-blur-lg shadow-lg shadow-black/5 border-b border-border/50"
+            : "bg-gradient-to-b from-white/80 to-transparent backdrop-blur-sm"
         }`}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
-          <div className="flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <button
               onClick={() => handleNavigation("/")}
-              className="group cursor-pointer"
+              className="group cursor-pointer flex-shrink-0"
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full animate-pulse" />
-                <div className="relative bg-white rounded-lg p-1.5 sm:p-2 transform group-hover:scale-110 transition-transform duration-300">
-                  <img
-                    src="/logo.png"
-                    alt="Technorain Solutions"
-                    className="h-8 sm:h-10 w-auto object-contain"
-                  />
-                </div>
-              </div>
+              <img
+                src="/logo.png"
+                alt="Technorain Solutions"
+                className="h-10 sm:h-12 w-auto object-contain transform group-hover:scale-105 transition-transform duration-300"
+              />
             </button>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavigation(link.href)}
-                  className={`relative text-md font-medium transition-all duration-300 group ${
+                  className={`relative px-4 py-2 rounded-lg text-md font-semibold transition-all duration-300 ${
                     location.pathname === link.href
-                      ? "text-primary scale-105"
-                      : "text-muted-foreground hover:text-foreground hover:scale-110"
+                      ? "text-primary"
+                      : "text-foreground/70 hover:text-foreground hover:bg-muted/50"
                   }`}
                 >
-                  {/* Glow effect on hover */}
-                  <span className="absolute inset-0 bg-primary/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="relative z-10">{link.label}</span>
 
-                  {/* Text */}
-                  <span className="relative">{link.label}</span>
-
-                  {/* Animated underline */}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-primary rounded-full transition-all duration-300 ${
-                      location.pathname === link.href
-                        ? "w-full shadow-lg shadow-primary/50"
-                        : "w-0 group-hover:w-full group-hover:shadow-lg group-hover:shadow-primary/50"
-                    }`}
-                  />
-
-                  {/* Dot indicator for active */}
+                  {/* Active indicator */}
                   {location.pathname === link.href && (
-                    <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full animate-pulse" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gradient-primary rounded-full" />
                   )}
                 </button>
               ))}
             </div>
 
-            {/* CTA Button */}
-            {/* <div className="hidden md:block">
+            {/* CTA Button - Desktop */}
+            <div className="hidden lg:block">
               <Button
                 onClick={() => handleNavigation("/contact")}
-                className="relative overflow-hidden group bg-gradient-primary hover:shadow-lg hover:shadow-primary/50 transition-all duration-300"
+                className="bg-gradient-primary text-white px-6 py-2 rounded-lg font-medium shadow-md hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 group"
               >
-                <span className="relative z-10">Get Started</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="flex items-center gap-2">
+                  Get In Touch
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </span>
               </Button>
-            </div> */}
+            </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+              className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg text-foreground hover:bg-muted transition-colors"
+              aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              <div className="relative w-5 h-5">
+                <span
+                  className={`absolute left-0 block w-5 h-0.5 bg-current transform transition-all duration-300 ${
+                    isMobileMenuOpen ? "top-2 rotate-45" : "top-1"
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 top-2 block w-5 h-0.5 bg-current transition-all duration-300 ${
+                    isMobileMenuOpen
+                      ? "opacity-0 scale-0"
+                      : "opacity-100 scale-100"
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 block w-5 h-0.5 bg-current transform transition-all duration-300 ${
+                    isMobileMenuOpen ? "top-2 -rotate-45" : "top-3"
+                  }`}
+                />
+              </div>
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
       >
+        {/* Backdrop */}
         <div
-          className="absolute inset-0 bg-background/95 backdrop-blur-xl"
+          className={`absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-500 ${
+            isMobileMenuOpen ? "opacity-100" : "opacity-0"
+          }`}
           onClick={() => setIsMobileMenuOpen(false)}
         />
-        <div className="relative h-full flex flex-col items-center justify-center gap-8 p-8">
-          {navLinks.map((link, index) => (
+
+        {/* Menu Panel */}
+        <div
+          className={`absolute top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl transform transition-transform duration-500 ease-out ${
+            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          {/* Menu Header */}
+          <div className="flex items-center justify-between p-4 border-b border-border">
+            {/* <img
+              src="/logo.png"
+              alt="Technorain Solutions"
+              className="h-8 w-auto object-contain"
+            /> */}
             <button
-              key={link.href}
-              onClick={() => handleNavigation(link.href)}
-              className={`text-2xl font-bold transition-all duration-300 ${
-                location.pathname === link.href
-                  ? "text-gradient scale-110"
-                  : "text-muted-foreground hover:text-foreground hover:scale-105"
-              }`}
-              style={{
-                animationDelay: `${index * 100}ms`,
-                animation: isMobileMenuOpen
-                  ? "slideIn 0.3s ease-out forwards"
-                  : "none",
-              }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-10 h-10 flex items-center justify-center rounded-lg text-foreground hover:bg-muted transition-colors"
+              aria-label="Close menu"
             >
-              {link.label}
+              <X className="w-5 h-5" />
             </button>
-          ))}
-          {/* <Button
-            onClick={() => handleNavigation("/contact")}
-            size="lg"
-            className="mt-8 bg-gradient-primary hover:shadow-lg hover:shadow-primary/50 transition-all duration-300"
-          >
-            Get Started
-          </Button> */}
+          </div>
+
+          {/* Menu Links */}
+          <div className="flex flex-col p-4 space-y-1">
+            {navLinks.map((link, index) => (
+              <button
+                key={link.href}
+                onClick={() => handleNavigation(link.href)}
+                className={`flex items-center justify-between py-3 px-4 rounded-xl text-base font-medium transition-all duration-300 ${
+                  location.pathname === link.href
+                    ? "text-primary bg-primary/10"
+                    : "text-foreground hover:text-primary hover:bg-muted"
+                }`}
+                style={{
+                  transform: isMobileMenuOpen
+                    ? "translateX(0)"
+                    : "translateX(20px)",
+                  opacity: isMobileMenuOpen ? 1 : 0,
+                  transitionDelay: isMobileMenuOpen
+                    ? `${index * 50 + 100}ms`
+                    : "0ms",
+                }}
+              >
+                <span>{link.label}</span>
+                {location.pathname === link.href && (
+                  <span className="w-2 h-2 rounded-full bg-primary" />
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Menu Footer */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-border bg-muted/30">
+            <Button
+              onClick={() => handleNavigation("/contact")}
+              className="w-full bg-gradient-primary text-white py-3 rounded-xl font-medium shadow-md hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
+            >
+              <span className="flex items-center justify-center gap-2">
+                Get In Touch
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            </Button>
+
+            {/* Contact Info */}
+            <div className="mt-4 text-center">
+              <p className="text-xs text-muted-foreground">Need help?</p>
+              <a
+                href="tel:+27842031191"
+                className="text-sm font-medium text-primary hover:underline"
+              >
+                (+27) 84 203 1191
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </>
   );
 }

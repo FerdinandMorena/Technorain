@@ -26,9 +26,10 @@ export default function HomePage() {
     <PageLayout>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Animated background */}
+        {/* Background layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
         <div className="absolute inset-0 gradient-mesh" />
-        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute inset-0 grid-pattern" />
 
         {/* Floating orbs */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float" />
@@ -36,19 +37,22 @@ export default function HomePage() {
           className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "2s" }}
         />
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full blur-3xl"
+        />
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
           <div className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full glass-effect border border-primary/20 text-xs sm:text-sm font-medium mb-4 sm:mb-6 animate-glow">
-              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-              <span className="text-gradient">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border shadow-sm text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-gradient font-semibold">
                 Empowering Digital Transformation
               </span>
             </div>
 
             {/* Main heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white font-bold leading-tight px-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-foreground font-bold leading-tight px-2">
               Transform Your Business with{" "}
               <span className="text-gradient">Next-Gen</span>
               <br className="hidden sm:block" />
@@ -67,20 +71,19 @@ export default function HomePage() {
               <Button
                 size="lg"
                 onClick={() => handleNavigation("/contact")}
-                className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 bg-gradient-primary hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 group relative overflow-hidden"
+                className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 bg-gradient-primary hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 group relative overflow-hidden"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   Start Your Journey
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </Button>
 
               <Button
                 size="lg"
                 variant="outline"
                 onClick={() => handleNavigation("/projects")}
-                className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 glass-effect border-primary/30 hover:bg-primary/10 hover:border-primary transition-all duration-300"
+                className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 bg-white border-2 border-border hover:border-primary hover:bg-primary/5 transition-all duration-300"
               >
                 View Our Work
               </Button>
@@ -96,7 +99,7 @@ export default function HomePage() {
               ].map((stat, index) => (
                 <div
                   key={index}
-                  className="glass-effect rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:bg-primary/5 transition-all duration-300 group border border-border/50 hover:border-primary/50"
+                  className="card-elevated rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-primary/50 transition-all duration-300 group"
                 >
                   <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary mb-2 sm:mb-3 mx-auto group-hover:scale-110 transition-transform" />
                   <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-1 sm:mb-2">
@@ -120,16 +123,16 @@ export default function HomePage() {
       </section>
 
       {/* Services Grid */}
-      <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 dot-pattern opacity-10" />
+      <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden bg-muted/30">
+        <div className="absolute inset-0 dot-pattern" />
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-16 lg:mb-20 space-y-3 sm:space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full glass-effect border border-primary/20 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
-              <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-              Our Services
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border shadow-sm text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+              <Zap className="w-4 h-4 text-primary" />
+              <span className="font-semibold text-foreground">Our Services</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold px-2 text-foreground">
               Comprehensive <span className="text-gradient">IT Solutions</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
@@ -185,7 +188,7 @@ export default function HomePage() {
             ].map((service, index) => (
               <div
                 key={index}
-                className="group relative glass-effect rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 hover:bg-card/50 transition-all duration-500 border border-border/50 hover:border-primary/50 overflow-hidden"
+                className="group card-elevated rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 hover:border-primary/50 transition-all duration-500 overflow-hidden"
               >
                 {/* Gradient overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -193,15 +196,14 @@ export default function HomePage() {
                 <div className="relative z-10">
                   {/* Icon */}
                   <div className="relative mb-4 sm:mb-6">
-                    <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div
-                      className={`relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-lg sm:rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}
+                      className={`relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-lg sm:rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}
                     >
                       <service.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                     </div>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 group-hover:text-gradient transition-all duration-300">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-foreground group-hover:text-gradient transition-all duration-300">
                     {service.title}
                   </h3>
                   <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4">
@@ -224,17 +226,18 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
         <div className="absolute inset-0 gradient-mesh" />
-        <div className="absolute inset-0 grid-pattern opacity-20" />
+        <div className="absolute inset-0 grid-pattern" />
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full glass-effect border border-primary/20 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
-              <Rocket className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-              Ready to Transform?
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border shadow-sm text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+              <Rocket className="w-4 h-4 text-primary" />
+              <span className="font-semibold text-foreground">Ready to Transform?</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold px-2 text-foreground">
               Let's Build the <span className="text-gradient">Future</span>{" "}
               Together
             </h2>
@@ -248,7 +251,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 onClick={() => handleNavigation("/contact")}
-                className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 bg-gradient-primary hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 group"
+                className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 bg-gradient-primary hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 group"
               >
                 <span className="flex items-center justify-center gap-2">
                   Get Started Today
@@ -260,7 +263,7 @@ export default function HomePage() {
                 size="lg"
                 variant="outline"
                 onClick={() => handleNavigation("/projects")}
-                className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 glass-effect border-primary/30 hover:bg-primary/10 hover:border-primary transition-all duration-300"
+                className="w-full sm:w-auto text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 bg-white border-2 border-border hover:border-primary hover:bg-primary/5 transition-all duration-300"
               >
                 View Case Studies
               </Button>

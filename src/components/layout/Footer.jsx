@@ -1,9 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
-import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
 /**
- * Footer component - Futuristic design
+ * Footer component - Clean modern design
  */
 export default function Footer() {
   const navigate = useNavigate();
@@ -31,28 +31,21 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <footer className="relative border-t border-border/50 bg-card/30 backdrop-blur-sm">
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 gradient-mesh opacity-30 pointer-events-none" />
+    <footer className="relative border-t border-border bg-muted/30">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-muted/50 pointer-events-none" />
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-12">
           {/* Brand */}
           <div className="space-y-4">
             <div className="relative inline-block">
-              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full" />
-              <div className="relative bg-white rounded-lg p-1.5">
-                <img
-                  src="/logo.png"
-                  alt="Technorain Solutions"
-                  className="h-20 w-auto object-contain"
-                />
-              </div>
+              <img
+                src="/logo.png"
+                alt="Technorain Solutions"
+                className="h-16 w-auto object-contain"
+              />
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Empowering businesses through innovative IT solutions and
@@ -66,9 +59,9 @@ export default function Footer() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg glass-effect flex items-center justify-center hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 group"
+                  className="w-10 h-10 rounded-lg bg-white border border-border flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 group shadow-sm"
                 >
-                  <Icon className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                  <Icon className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
                 </a>
               ))}
             </div>
@@ -77,7 +70,7 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h4 className="font-semibold mb-6 text-foreground flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-primary rounded-full" />
+              <div className="w-1 h-5 bg-gradient-primary rounded-full" />
               Services
             </h4>
             <ul className="space-y-3 text-sm">
@@ -102,7 +95,7 @@ export default function Footer() {
           {/* Company */}
           <div>
             <h4 className="font-semibold mb-6 text-foreground flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-primary rounded-full" />
+              <div className="w-1 h-5 bg-gradient-primary rounded-full" />
               Company
             </h4>
             <ul className="space-y-3 text-sm">
@@ -127,12 +120,12 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h4 className="font-semibold mb-6 text-foreground flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-primary rounded-full" />
+              <div className="w-1 h-5 bg-gradient-primary rounded-full" />
               Contact
             </h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3 group">
-                <div className="w-8 h-8 rounded-lg glass-effect flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors">
+                <div className="w-8 h-8 rounded-lg bg-white border border-border flex items-center justify-center flex-shrink-0 group-hover:border-primary transition-colors shadow-sm">
                   <Phone className="w-4 h-4 text-primary" />
                 </div>
                 <div>
@@ -142,7 +135,7 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex items-start gap-3 group">
-                <div className="w-8 h-8 rounded-lg glass-effect flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors">
+                <div className="w-8 h-8 rounded-lg bg-white border border-border flex items-center justify-center flex-shrink-0 group-hover:border-primary transition-colors shadow-sm">
                   <Mail className="w-4 h-4 text-primary" />
                 </div>
                 <div>
@@ -152,7 +145,7 @@ export default function Footer() {
                 </div>
               </li>
               <li className="flex items-start gap-3 group">
-                <div className="w-8 h-8 rounded-lg glass-effect flex items-center justify-center flex-shrink-0 group-hover:bg-primary/10 transition-colors">
+                <div className="w-8 h-8 rounded-lg bg-white border border-border flex items-center justify-center flex-shrink-0 group-hover:border-primary transition-colors shadow-sm">
                   <MapPin className="w-4 h-4 text-primary" />
                 </div>
                 <div>
@@ -168,29 +161,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground text-center md:text-left">
             © {new Date().getFullYear()} Technorain Solutions (PTY) LTD. All rights reserved.
           </p>
-          {/* <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <button className="hover:text-primary transition-colors">
-              Privacy Policy
-            </button>
-            <button className="hover:text-primary transition-colors">
-              Terms of Service
-            </button>
-          </div> */}
         </div>
       </div>
-
-      {/* Scroll to top button */}
-      <button
-        onClick={scrollToTop}
-        className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-primary rounded-full flex items-center justify-center shadow-lg hover:shadow-primary/50 transition-all duration-300 hover:scale-110 glow-primary z-40 group"
-        aria-label="Scroll to top"
-      >
-        <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 text-background group-hover:animate-bounce" />
-      </button>
     </footer>
   );
 }
