@@ -131,6 +131,93 @@ body {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 
+  /* Animated gradient border - color shift effect */
+  .border-gradient-animated {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    background-image: linear-gradient(hsl(var(--card)), hsl(var(--card))), 
+                      linear-gradient(90deg, #57E325, #4472C4, #57E325);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-size: 100% 100%, 200% 100%;
+    animation: borderColorShift 3s ease-in-out infinite;
+  }
+
+  /* Subtle animated border for cards - shimmer effect */
+  .card-animated-border {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    border: 1px solid hsl(var(--border));
+    transition: all 0.3s ease;
+  }
+
+  .card-animated-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(87, 227, 37, 0.6) 25%,
+      rgba(68, 114, 196, 0.6) 50%,
+      rgba(87, 227, 37, 0.6) 75%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderShimmer 4s ease-in-out infinite;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .card-animated-border:hover::before {
+    opacity: 1;
+    animation-duration: 2s;
+  }
+
+  .card-animated-border:hover {
+    border-color: transparent;
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+  /* Glowing pulse border */
+  .border-glow-animated {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .border-glow-animated::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #57E325, #4472C4, #57E325);
+    background-size: 200% 100%;
+    animation: borderShimmer 3s ease-in-out infinite;
+    z-index: -1;
+    filter: blur(6px);
+    opacity: 0.4;
+  }
+
+  .border-glow-animated:hover::before {
+    opacity: 0.7;
+  }
+
   .glow-primary {
     box-shadow: 0 0 20px hsla(var(--primary), 0.3);
   }
@@ -158,21 +245,25 @@ body {
     animation: glow 2s ease-in-out infinite alternate;
   }
 
+  /* Animated grid pattern - smooth color shifting effect */
   .grid-pattern {
-    background-image: linear-gradient(
-        rgba(68, 114, 196, 0.08) 1px,
-        transparent 1px
-      ),
-      linear-gradient(90deg, rgba(68, 114, 196, 0.08) 1px, transparent 1px);
-    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(rgba(87, 227, 37, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(87, 227, 37, 0.06) 1px, transparent 1px),
+      linear-gradient(rgba(68, 114, 196, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 114, 196, 0.06) 1px, transparent 1px);
+    background-size: 50px 50px, 50px 50px, 50px 50px, 50px 50px;
+    animation: gridColorShift 8s linear infinite;
   }
 
+  /* Animated dot pattern - smooth color shifting effect */
   .dot-pattern {
-    background-image: radial-gradient(
-      rgba(68, 114, 196, 0.15) 1px,
-      transparent 1px
-    );
-    background-size: 20px 20px;
+    background-image: 
+      radial-gradient(rgba(87, 227, 37, 0.12) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(68, 114, 196, 0.12) 1.5px, transparent 1.5px);
+    background-size: 24px 24px, 24px 24px;
+    background-position: 0 0, 12px 12px;
+    animation: dotColorShift 6s linear infinite;
   }
 
   .section-divider {
@@ -181,9 +272,9 @@ body {
   }
 }
 
+/* Keyframe animations */
 @keyframes float {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px);
   }
   50% {
@@ -210,6 +301,200 @@ body {
   }
 }
 
+@keyframes gridMove {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 50px 50px, 50px 50px;
+  }
+}
+
+@keyframes dotDrift {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 10px 10px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes particleFloat1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translate(30px, -40px) scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-20px, -80px) scale(0.9);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(40px, -40px) scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@keyframes particleFloat2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translate(-40px, -30px) scale(0.95);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(30px, -60px) scale(1.1);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(-20px, -30px) scale(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* Grid color shift - ultra smooth transition with subtle opacity */
+@keyframes gridColorShift {
+  0%, 100% {
+    background-image: 
+      linear-gradient(rgba(87, 227, 37, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(87, 227, 37, 0.08) 1px, transparent 1px),
+      linear-gradient(rgba(68, 114, 196, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 114, 196, 0.02) 1px, transparent 1px);
+  }
+  12.5% {
+    background-image: 
+      linear-gradient(rgba(87, 227, 37, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(87, 227, 37, 0.07) 1px, transparent 1px),
+      linear-gradient(rgba(68, 114, 196, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 114, 196, 0.03) 1px, transparent 1px);
+  }
+  25% {
+    background-image: 
+      linear-gradient(rgba(87, 227, 37, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(87, 227, 37, 0.055) 1px, transparent 1px),
+      linear-gradient(rgba(68, 114, 196, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 114, 196, 0.045) 1px, transparent 1px);
+  }
+  37.5% {
+    background-image: 
+      linear-gradient(rgba(87, 227, 37, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(87, 227, 37, 0.04) 1px, transparent 1px),
+      linear-gradient(rgba(68, 114, 196, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 114, 196, 0.06) 1px, transparent 1px);
+  }
+  50% {
+    background-image: 
+      linear-gradient(rgba(87, 227, 37, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(87, 227, 37, 0.02) 1px, transparent 1px),
+      linear-gradient(rgba(68, 114, 196, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 114, 196, 0.08) 1px, transparent 1px);
+  }
+  62.5% {
+    background-image: 
+      linear-gradient(rgba(87, 227, 37, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(87, 227, 37, 0.04) 1px, transparent 1px),
+      linear-gradient(rgba(68, 114, 196, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 114, 196, 0.06) 1px, transparent 1px);
+  }
+  75% {
+    background-image: 
+      linear-gradient(rgba(87, 227, 37, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(87, 227, 37, 0.055) 1px, transparent 1px),
+      linear-gradient(rgba(68, 114, 196, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 114, 196, 0.045) 1px, transparent 1px);
+  }
+  87.5% {
+    background-image: 
+      linear-gradient(rgba(87, 227, 37, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(87, 227, 37, 0.07) 1px, transparent 1px),
+      linear-gradient(rgba(68, 114, 196, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 114, 196, 0.03) 1px, transparent 1px);
+  }
+}
+
+/* Dot color shift - ultra smooth transition with subtle opacity */
+@keyframes dotColorShift {
+  0%, 100% {
+    background-image: 
+      radial-gradient(rgba(87, 227, 37, 0.16) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(68, 114, 196, 0.04) 1.5px, transparent 1.5px);
+  }
+  12.5% {
+    background-image: 
+      radial-gradient(rgba(87, 227, 37, 0.14) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(68, 114, 196, 0.06) 1.5px, transparent 1.5px);
+  }
+  25% {
+    background-image: 
+      radial-gradient(rgba(87, 227, 37, 0.11) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(68, 114, 196, 0.09) 1.5px, transparent 1.5px);
+  }
+  37.5% {
+    background-image: 
+      radial-gradient(rgba(87, 227, 37, 0.08) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(68, 114, 196, 0.12) 1.5px, transparent 1.5px);
+  }
+  50% {
+    background-image: 
+      radial-gradient(rgba(87, 227, 37, 0.04) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(68, 114, 196, 0.16) 1.5px, transparent 1.5px);
+  }
+  62.5% {
+    background-image: 
+      radial-gradient(rgba(87, 227, 37, 0.08) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(68, 114, 196, 0.12) 1.5px, transparent 1.5px);
+  }
+  75% {
+    background-image: 
+      radial-gradient(rgba(87, 227, 37, 0.11) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(68, 114, 196, 0.09) 1.5px, transparent 1.5px);
+  }
+  87.5% {
+    background-image: 
+      radial-gradient(rgba(87, 227, 37, 0.14) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(68, 114, 196, 0.06) 1.5px, transparent 1.5px);
+  }
+}
+
+/* Border shimmer animation - colors flow left to right */
+@keyframes borderShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Border color shift animation */
+@keyframes borderColorShift {
+  0%, 100% {
+    background-position: 0% 0, 0% 0;
+  }
+  50% {
+    background-position: 0% 0, 100% 0;
+  }
+}
+
 .animate-shimmer {
   animation: shimmer 3s infinite linear;
   background: linear-gradient(
@@ -219,6 +504,10 @@ body {
     transparent
   );
   background-size: 1000px 100%;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
 }
 
 /* Scrollbar styling */

@@ -31,21 +31,22 @@ export default function HomePage() {
         <div className="absolute inset-0 gradient-mesh" />
         <div className="absolute inset-0 grid-pattern" />
 
-        {/* Floating orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float" />
+        {/* Floating orbs with pulse animation */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float animate-pulse-slow" />
         <div
-          className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-float"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-float animate-pulse-slow"
           style={{ animationDelay: "2s" }}
         />
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full blur-3xl animate-pulse-slow"
+          style={{ animationDelay: "1s" }}
         />
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
           <div className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border shadow-sm text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-              <Sparkles className="w-4 h-4 text-primary" />
+              <Sparkles className="w-4 h-4 text-primary animate-pulse" />
               <span className="text-gradient font-semibold">
                 Empowering Digital Transformation
               </span>
@@ -99,7 +100,7 @@ export default function HomePage() {
               ].map((stat, index) => (
                 <div
                   key={index}
-                  className="card-elevated rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-primary/50 transition-all duration-300 group"
+                  className="card-elevated rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-primary/50 transition-all duration-300 group text-center"
                 >
                   <stat.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary mb-2 sm:mb-3 mx-auto group-hover:scale-110 transition-transform" />
                   <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-1 sm:mb-2">
@@ -188,36 +189,31 @@ export default function HomePage() {
             ].map((service, index) => (
               <div
                 key={index}
-                className="group card-elevated rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 hover:border-primary/50 transition-all duration-500 overflow-hidden"
+                className="group card-elevated rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 hover:border-primary/50 transition-all duration-500"
               >
-                {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="relative mb-4 sm:mb-6">
-                    <div
-                      className={`relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-lg sm:rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}
-                    >
-                      <service.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
-                    </div>
-                  </div>
-
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-foreground group-hover:text-gradient transition-all duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4">
-                    {service.description}
-                  </p>
-
-                  <button
-                    onClick={() => handleNavigation("/services")}
-                    className="text-primary text-sm sm:text-base font-medium flex items-center gap-2 group-hover:gap-3 transition-all duration-300"
+                {/* Icon */}
+                <div className="relative mb-4 sm:mb-6">
+                  <div
+                    className={`relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-lg sm:rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}
                   >
-                    Learn more
-                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                  </button>
+                    <service.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
+                  </div>
                 </div>
+
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 text-foreground group-hover:text-gradient transition-all duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4">
+                  {service.description}
+                </p>
+
+                <button
+                  onClick={() => handleNavigation("/services")}
+                  className="text-primary text-sm sm:text-base font-medium flex items-center gap-2 group-hover:gap-3 transition-all duration-300"
+                >
+                  Learn more
+                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+                </button>
               </div>
             ))}
           </div>
